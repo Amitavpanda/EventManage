@@ -30,6 +30,7 @@ module.exports = {
         },
         brown : {
           50 : '#A2783A',
+          30 : 'rgba(0, 0, 0, 0.25)',
         },
         black : {
           100 : '#000',
