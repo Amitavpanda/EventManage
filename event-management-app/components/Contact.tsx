@@ -5,7 +5,7 @@
 
 import React from 'react';
 import { FieldValues, useForm } from 'react-hook-form';
-import {z} from "zod";
+import { z } from "zod";
 import { resolve } from 'path';
 import { zodResolver } from '@hookform/resolvers/zod';
 import Button from './Button';
@@ -41,6 +41,21 @@ function ContactDetails({ title, info }: ContactDetailsInfo) {
   );
 }
 
+function GoogleMap() {
+  return (
+    <div className='rounded-lg  overflow-hidden shadow-lg transition-transform transform hover:scale-105'>
+      <iframe
+        width="100%"
+        height="416"
+        src="https://maps.google.com/maps?width=100%&amp;height=416&amp;hl=en&amp;q=Hill%20Patna%20,%20Brahmapur,%20Odisha,%20760001+(Yes%202%20Bazar)&amp;t=&amp;z=17&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+        title="Google Map"
+      >
+        <a href="https://www.maps.ie/population/">Find Population on Map</a>
+      </iframe>
+    </div>
+  )
+}
+
 const Contact = () => {
   const {
     register,
@@ -53,24 +68,24 @@ const Contact = () => {
 
   const onSubmit = async (data: FieldValues) => {
 
-    try{
+    try {
       console.log("Form data submitted: ", data);
 
       const response = await axios.post('http://localhost:1337/api/contactFormDetails', data);
 
       if (response.status === 200) {
         console.log('Form data successfully stored in the backend.');
-  
+
         await new Promise(resolve => setTimeout(resolve, 1000));
         reset();
-      } 
-      else{
+      }
+      else {
         console.error("Form data not successfully stored");
       }
 
     }
-    catch(error){
-        console.error("Error submitting form: ",error);
+    catch (error) {
+      console.error("Error submitting form: ", error);
     }
 
 
@@ -78,16 +93,32 @@ const Contact = () => {
 
   return (
     <section className='flex flex-col max-container'>
-      {/* ... (previous code) */}
+
+      {/* first section */}
+      <div className='flex flex-col flexCenter'>
+        <h3 className='text-brown-50 font-alex-brush bold-24'>Location</h3>
+        <h2 className='regular-32 uppercase'>CONTACT</h2>
+      </div>
+
+
+      {/* second section */}
+      <div className='flex flex-row flex-wrap gap-5 flexCenter'>
+        <ContactDetails title='Address' info='Hill Patna, Berhmapur , Ganjam , Odisha' />
+        <ContactDetails title='Call Us' info='Call Us: 7077404655' />
+        <ContactDetails title='Mail Us' info='pandaamitav01@gmail.com' />
+      </div>
 
       {/* last section */}
-      <div className='flex flex-row gap-10 w-1/2 my-8'>
-        {/* ... (previous code) */}
+      <div className='flex flex-col gap-10  my-8 lg:flex-row flexCenter'>
+        {/* last subsection */}
+        <div className='w-1/2'>
+          <GoogleMap />
+        </div>
 
         {/* last subsection */}
         <div className='flex flex-col gap-5 w-1/2'>
           <h2 className='regular-20'>CONTACT</h2>
-          
+
           <form className='max-w-md my-3' onSubmit={handleSubmit(onSubmit)}>
             {/* first row */}
             <div className='mb-4 flex'>
