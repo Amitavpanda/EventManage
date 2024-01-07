@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');
+
 
 @tailwind base;
 @tailwind components;
@@ -13,6 +15,10 @@
 body {
   font-family: Inter;
   background-color: #FFF7EA;
+}
+
+.font-alex-brush {
+  font-family: 'Alex Brush', cursive;
 }
 
 @layer utilities {
@@ -130,6 +136,8 @@ body {
   .bold-16 {
     @apply text-[16px] font-[700];
   }
+
+  /* Font */
 
   /* Hero */
   .hero-map {
