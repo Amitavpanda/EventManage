@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Condiment&display=swap");
+
 
 
 @tailwind base;
@@ -21,12 +23,22 @@ body {
   font-family: 'Alex Brush', cursive;
 }
 
+.font-condiment {
+  font-family: 'Condiment', cursive;
+
+}
+
 @layer utilities {
   .btn_white { 
-    @apply  border-white bg-white px-8 py-3 text-green-50
+    @apply  border-white bg-white px-8 py-3 text-gray-90 font-bold
   }
   .btn_white_text:hover { 
     @apply  border-white bg-white px-8 py-3 text-gray-90 font-bold
+  }
+
+  .btn_dark_black_hover:hover{
+    @apply border-gray-20 bg-black-100 px-8 py-5 text-white
+
   }
   .btn_green  { 
     @apply  border-green-50 bg-green-50 px-8 py-5 text-white
@@ -40,6 +52,7 @@ body {
   .btn_dark_black {
     @apply border-gray-20 bg-black-100 px-8 py-5 text-white
   }
+  
   .max-container {
     @apply mx-auto max-w-[1440px];
   }

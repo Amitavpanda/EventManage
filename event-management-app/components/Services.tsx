@@ -1,5 +1,7 @@
+"use client"
+
 import React from 'react';
-import Video from 'next-video';
+// import Video from 'next-video';
 import { SERVICES } from '@/constants';
 import Image from 'next/image';
 import Button from './Button';
@@ -26,11 +28,11 @@ function Services() {
                 />
               </div>
             ))}
-            {service.videos.map((video, index) => (
+            {/* {service.videos.map((video, index) => (
               <div key={index} className='rounded-lg max-container'>
                 <Video src={video.src} width={300} height={300} className='rounded-lg' />
               </div>
-            ))}
+            ))} */}
           </div>
 
           <div className='flexCenter'>
@@ -40,7 +42,8 @@ function Services() {
               variant='btn_dark_black'
               hoverBgVariant='btn_white_text' 
               height={2}
-              width={14}/>
+              width={14}
+              />
           </div>
         </div>
       ))}
