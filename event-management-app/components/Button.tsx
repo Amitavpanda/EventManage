@@ -18,6 +18,7 @@ const Button: React.FC<ButtonProps> = ({ type, title, icon, variant, hoverBgVari
     width: width ? `${width}rem` : undefined,
   };
 
+
   return (
     <Link
       href={`/event-details/${eventId}`} passHref
