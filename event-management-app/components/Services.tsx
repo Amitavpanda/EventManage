@@ -43,7 +43,7 @@ function Services() {
               hoverBgVariant='btn_white_text' 
               height={2}
               width={14}
-              eventId={service?.key}
+              href={`/event-details/${service.key}`}
               />
           </div>
         </div>

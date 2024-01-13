@@ -9,6 +9,10 @@ interface EventDetailProps {
 }
 
 function EventDetail({ params }: EventDetailProps) {
+
+    console.log("params is ", params.eventId);
+    
+
     const eventDetails = SERVICES.find(service => service.key === params.eventId);
 
     if (!eventDetails) {
@@ -56,6 +60,7 @@ function EventDetail({ params }: EventDetailProps) {
                     title='Book Now'
                     variant='btn_dark_black'
                     hoverBgVariant='btn_white_text'
+                    href={`/event-details/${params.eventId}/book-now`}
                 />
             </div>
 
