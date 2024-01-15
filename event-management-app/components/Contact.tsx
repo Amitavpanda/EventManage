@@ -8,9 +8,9 @@ import { FieldValues, useForm } from 'react-hook-form';
 import { z } from "zod";
 import { resolve } from 'path';
 import { zodResolver } from '@hookform/resolvers/zod';
-import Button from './Button';
+import { Button } from './ui/button';
 import axios from 'axios';
-
+import { contactFormSchema } from '@/lib/validator';
 type ContactDetailsInfo = {
   title: string;
   info: string;
@@ -24,13 +24,7 @@ interface ContactFormInputs {
 }
 
 
-const contactFormSchema = z.object({
-  name: z.string(),
-  email: z.string().email(),
-  phoneNumber: z.string().min(10, "Phone number must be at least 10 digit numbers"),
-  message: z.string(),
 
-});
 
 function ContactDetails({ title, info }: ContactDetailsInfo) {
   return (
@@ -57,14 +51,12 @@ function GoogleMap() {
 }
 
 const Contact = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isSubmitting },
-    reset,
-  } = useForm({
-    resolver: zodResolver(contactFormSchema),
-  });
+
+
+
+    const form = useForm<z.infer<typeof contactFormSchema>>({
+        resolver: zodResolver(contactFormSchema),
+    })
 
   const onSubmit = async (data: FieldValues) => {
 
@@ -77,7 +69,7 @@ const Contact = () => {
         console.log('Form data successfully stored in the backend.');
 
         await new Promise(resolve => setTimeout(resolve, 1000));
-        reset();
+        form.reset();
       }
       else {
         console.error("Form data not successfully stored");
@@ -119,61 +111,51 @@ const Contact = () => {
         <div className='flex flex-col gap-5 w-1/2'>
           <h2 className='regular-20'>CONTACT</h2>
 
-          <form className='max-w-md my-3' onSubmit={handleSubmit(onSubmit)}>
+          <form className='max-w-md my-3' onSubmit={form.handleSubmit(onSubmit)}>
             {/* first row */}
             <div className='mb-4 flex'>
               <div className='mr-2 flex-1'>
                 <input
-                  {...register('name')}
+                  {...form.register('name')}
                   className='w-full px-3 py-2 border rounded-md border-brown-50 focus:outline-none bg-transparent text-brown-50 placeholder-brown-30'
                   placeholder='Name'
                 />
-
-                {errors.name && (
-                  <p className='text-red-500'>{`${errors.name.message}`}</p>
-                )}
               </div>
 
               <div className='ml-2 flex-1'>
                 <input
-                  {...register('phoneNumber')}
+                  {...form.register('phoneNumber')}
 
                   className='w-full px-3 py-2 border rounded-md border-brown-50 focus:outline-none bg-transparent text-brown-50 placeholder-brown-30'
                   placeholder='Phone'
                 />
 
-                {errors.phone && (
-                  <p className='text-red-500'>{`${errors.phone.message}`}</p>
-                )}
+
               </div>
             </div>
 
             {/* second row */}
             <div className='mb-4'>
               <input
-                {...register('email')}
+                {...form.register('email')}
                 className='w-full px-3 py-2 border rounded-md border-brown-50 focus:outline-none bg-transparent text-brown-50 placeholder-brown-30'
                 placeholder='Email'
               />
-              {errors.email && (
-                <p className='text-red-500'>{`${errors.email.message}`}</p>
-              )}
+ 
             </div>
 
             {/* text box */}
             <div className='mb-4'>
               <textarea
-                {...register('message')}
+                {...form.register('message')}
                 className='w-full px-3 py-2 border rounded-md border-brown-50 focus:outline-none bg-transparent text-brown-50 placeholder-brown-30'
                 placeholder='Message'
               />
 
-              {errors.message && (
-                <p className='text-red-500'>{`${errors.message.message}`}</p>
-              )}
+
             </div>
 
-            <Button type='submit' title='Send' variant='btn_dark_black' hoverBgVariant='btn_white_text' />
+            <Button type="submit" className="flexCenter gap-3 border btn_dark_black w-50 h-10 btn_white_text cursor-pointer" >Submit</Button>
           </form>
         </div>
       </div>
