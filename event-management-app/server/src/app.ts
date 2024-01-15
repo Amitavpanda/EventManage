@@ -10,7 +10,12 @@ import cors from 'cors';
 
 const app = express();
 
-app.use(express.json()); // Add this line for JSON body parsing
+
+app.use(
+    express.urlencoded({ extended: true })
+);
+    
+app.use(express.json());
 
 
 const appLogger = logger.child({ filename: path.basename(__filename) });

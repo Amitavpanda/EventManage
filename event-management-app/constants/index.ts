@@ -89,3 +89,28 @@ export const SERVICES = [
 
 ];
 
+export const BookNowDefaultValues = {
+  name: "",
+  phoneNumber: "",
+  budget: "",
+  category: "",
+  requirements: "",
+  startDateTime: new Date(),
+  endDateTime: new Date(),
+  guestsNumber: "",
+}
+
+export const EventCategory = [
+  {id:"wedding", title: "Wedding"},
+  {id:"birthday", title: "Birthday Party and Baby Shower"},
+  {id:"sangeet", title: "Sangeet"},
+  {id:"Haldi", title: "Haldi and Mehendi Ceremony"},
+  {id:"cermony", title: "Ring Ceremony"},
+
+
+
+
+
+
+]
+
