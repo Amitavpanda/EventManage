@@ -1,18 +1,32 @@
+"use client"
+
 import { NAV_LINKS } from '@/constants';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react'
+import { useRouter } from 'next/navigation';
+
 
 function Navbar() {
+
+    const router = useRouter();
+
+    const handleNavLinkClick = (href: string) => async (e: React.MouseEvent) => {
+        e.preventDefault();
+      
+        const result = await router.push(href);
+      };
   return (
     <nav className='flexBetween padding-container relative z-30 py-5' style={{ boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.25)' }}>
         <Link href="/">
             Logo
         </Link>
 
+{/* #/#about */}
         <ul className="hidden h-full gap-12 md:flex">
             {NAV_LINKS.map((link) => (
-                <Link href={link.href} key={link.key} className='regular-16 flexCenter cursor-pointer pb-1.5 transition-all hover:font-bold text-brown-50' >
+                <Link href={`#${link.href}`} key={link.key} className='regular-16 flexCenter cursor-pointer pb-1.5 transition-all hover:font-bold text-brown-50' onClick={handleNavLinkClick(`${link.href}`)}
+                >
                     {link.label}
                 </Link>
 

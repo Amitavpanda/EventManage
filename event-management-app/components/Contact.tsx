@@ -23,7 +23,9 @@ interface ContactFormInputs {
   message: string;
 }
 
-
+interface ContactProps {
+  id : string,
+}
 
 
 function ContactDetails({ title, info }: ContactDetailsInfo) {
@@ -50,10 +52,7 @@ function GoogleMap() {
   )
 }
 
-const Contact = () => {
-
-
-
+const Contact = ({id} : ContactProps) => {
     const form = useForm<z.infer<typeof contactFormSchema>>({
         resolver: zodResolver(contactFormSchema),
     })
@@ -84,7 +83,7 @@ const Contact = () => {
   }
 
   return (
-    <section className='flex flex-col max-container'>
+    <section id={id} className='flex-grow flex flex-col max-container'>
 
       {/* first section */}
       <div className='flex flex-col flexCenter'>

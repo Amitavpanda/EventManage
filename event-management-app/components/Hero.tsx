@@ -6,7 +6,7 @@ import HeroPic2 from '../public/HeroLogo2.png'
 
 function Hero() {
   return (
-    <section className='max-container border-2 border-red-500 padding-container flex flex-col  gap-20 py-10 pb-32 md:gap-28 lg:py-20 lg:flex-row lg:flexStart'>
+    <section className='max-container  padding-container flex flex-col  gap-20 py-10 pb-32 md:gap-28 lg:py-20 lg:flex-row lg:flexStart'>
 
       {/* LEFT */}
 
