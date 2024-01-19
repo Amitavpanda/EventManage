@@ -3,9 +3,9 @@
 
 export const NAV_LINKS = [
   { href: "/", key: "home", label: "Home" },
-  { href: "/", key: "about", label: "About" },
-  { href: "/", key: "services", label: "Services" },
-  { href: "/", key: "contact", label: "Contact" },
+  { href: "/#about", key: "about", label: "About" },
+  { href: "/#services", key: "services", label: "Services" },
+  { href: "/#contact", key: "contact", label: "Contact" },
 
 ];
 
@@ -19,6 +19,17 @@ export const SERVICES = [
       { src: "/weddingPic2.png", alt: "" },
       { src: "/weddingPic3.png", alt: "" },
       { src: "/weddingPic4.png", alt: "" },
+      { src: "/weddingPic.png", alt: "" },
+      { src: "/weddingPic1.png", alt: "" },
+      { src: "/weddingPic2.png", alt: "" },
+      { src: "/weddingPic3.png", alt: "" },
+      { src: "/weddingPic4.png", alt: "" },
+      { src: "/weddingPic.png", alt: "" },
+      { src: "/weddingPic1.png", alt: "" },
+      { src: "/weddingPic2.png", alt: "" },
+      { src: "/weddingPic3.png", alt: "" },
+      { src: "/weddingPic4.png", alt: "" },
+      { src: "/weddingPic4.png", alt: "" },
     ],
     videos: [
       { src: "weddingVideo1.mp4", type: "video/mp4" },
@@ -31,8 +42,8 @@ export const SERVICES = [
     key: "wedding",
     details: {
       image: {
-        src : "/WeddingEventDetailsPic.jpeg",
-        alt : "image of a details pic"
+        src: "/WeddingEventDetailsPic.png",
+        alt: "image of a details pic wedding"
       },
       description: "We assure you that we'll arrange the best catering services, wedding decorations, and everything necessary for a successful wedding. Through our connections, you can avail discounts on all wedding essentials. All of this will be provided at a reasonable price, unmatched anywhere else.",
       button: "Book Now",
@@ -53,6 +64,19 @@ export const SERVICES = [
     images: [{ src: "/birthdayPic.png", alt: "" },
     { src: "/birthdayPic2.png", alt: "" },
     { src: "/birthdayPic3.png", alt: "" },
+    { src: "/birthdayPic.png", alt: "" },
+    { src: "/birthdayPic2.png", alt: "" },
+    { src: "/birthdayPic3.png", alt: "" },
+    { src: "/birthdayPic.png", alt: "" },
+    { src: "/birthdayPic2.png", alt: "" },
+    { src: "/birthdayPic3.png", alt: "" },
+    { src: "/birthdayPic.png", alt: "" },
+    { src: "/birthdayPic2.png", alt: "" },
+    { src: "/birthdayPic3.png", alt: "" },
+    { src: "/birthdayPic.png", alt: "" },
+    { src: "/birthdayPic2.png", alt: "" },
+    { src: "/birthdayPic3.png", alt: "" },
+    { src: "/birthdayPic3.png", alt: "" },
     ],
     videos: [
       { src: "birthdayVideo.mp4", type: "birthdayVideo1.mp4" },
@@ -63,8 +87,8 @@ export const SERVICES = [
     key: "birthday",
     details: {
       image: {
-        src : "/BirthdayEventDetailsPic.png",
-        alt : "image of a details pic"
+        src: "/BirthdayEventDetailsPic.png",
+        alt: "image of a details pic"
       },
       description: "We assure you that we will arrange everything for a fantastic birthday party, including catering services, decorations, and themes. We have connections that can get you discounts on all the necessary items for the birthday celebration. All of this will be provided at a reasonable price, and you won't find a better deal anywhere else.",
       button: "Book Now",
@@ -84,7 +108,153 @@ export const SERVICES = [
 
       ],
     },
-    
+
+  },
+
+
+  {
+    title: "Haldi Cermony",
+    images: [{ src: "/Haldi.jpeg", alt: "" },
+    { src: "/Haldi2.jpeg", alt: "" },
+    { src: "/Haldi3.jpeg", alt: "" },
+    { src: "/Haldi4.jpeg", alt: "" },
+    { src: "/Haldi.jpeg", alt: "" },
+    { src: "/Haldi2.jpeg", alt: "" },
+    { src: "/Haldi3.jpeg", alt: "" },
+    { src: "/Haldi4.jpeg", alt: "" },
+    { src: "/Haldi.jpeg", alt: "" },
+    { src: "/Haldi2.jpeg", alt: "" },
+    { src: "/Haldi3.jpeg", alt: "" },
+    { src: "/Haldi4.jpeg", alt: "" },
+    ],
+    videos: [
+      { src: "birthdayVideo.mp4", type: "birthdayVideo1.mp4" },
+
+    ],
+    buttonLabel: "Details",
+    href: "/service2",
+    key: "haldi",
+    details: {
+      image: {
+        src: "/Haldi.jpeg",
+        alt: "image of a details pic"
+      },
+      description: "We assure you that we will arrange everything for a fantastic birthday party, including catering services, decorations, and themes. We have connections that can get you discounts on all the necessary items for the birthday celebration. All of this will be provided at a reasonable price, and you won't find a better deal anywhere else.",
+      button: "Book Now",
+      bulletPoints: [
+        { title: "Theme Development", icon: "icon1.png", message: "We'll work together with you to choose a theme for the birthday party, and all designs, coordination, and decorations will be based on the selected theme." },
+        { title: "Venue Setup", icon: "icon2.png", message: "We'll handle the setup and decoration of the venue, including chairs, tables, and all essentials for the party." },
+        { title: "Entertainment and Activities", icon: "icon2.png", message: "We'll organize entertainment options like DJs, live bands, magicians, and other performers at discounted rates. Interactive games will be tailored to the age group and preferences of your guests." },
+        { title: "Catering Services", icon: "icon2.png", message: "Our catering services are top-notch and customizable based on your preferences, considered the best among all services available." },
+        { title: "Invitations Management", icon: "icon2.png", message: "We'll design and send out invitations, managing and keeping track of guest lists." },
+        { title: "Cake and Dessert Coordination", icon: "icon2.png", message: "Choose from the best bakeries with discounts for your cake and dessert needs." },
+        { title: "Photography and Videography", icon: "icon2.png", message: "Our connections with top photographers and videographers ensure a variety of options tailored to your needs." },
+        { title: "Gifts and Favours", icon: "icon2.png", message: "We'll assist you in selecting gifts and party favours for your guests." },
+
+
+
+
+
+      ],
+    },
+
+  },
+
+  {
+    title: "Ring Cermony",
+    images: [{ src: "/Ring.jpeg", alt: "" },
+    { src: "/Ring2.jpeg", alt: "" },
+    { src: "/Ring.jpeg", alt: "" },
+    { src: "/Ring2.jpeg", alt: "" },
+    { src: "/Ring.jpeg", alt: "" },
+    { src: "/Ring2.jpeg", alt: "" },
+    { src: "/Ring.jpeg", alt: "" },
+    { src: "/Ring2.jpeg", alt: "" },
+    { src: "/Ring.jpeg", alt: "" },
+    { src: "/Ring2.jpeg", alt: "" },
+    { src: "/Ring.jpeg", alt: "" },
+    { src: "/Ring2.jpeg", alt: "" },
+    { src: "/Ring.jpeg", alt: "" },
+    { src: "/Ring2.jpeg", alt: "" }, 
+    { src: "/Ring.jpeg", alt: "" },
+    { src: "/Ring2.jpeg", alt: "" },
+
+    ],
+    videos: [
+      { src: "birthdayVideo.mp4", type: "birthdayVideo1.mp4" },
+
+    ],
+    buttonLabel: "Details",
+    href: "/service2",
+    key: "ring",
+    details: {
+      image: {
+        src: "/Ring.jpeg",
+        alt: "image of a details pic"
+      },
+      description: "We assure you that we will arrange everything for a fantastic birthday party, including catering services, decorations, and themes. We have connections that can get you discounts on all the necessary items for the birthday celebration. All of this will be provided at a reasonable price, and you won't find a better deal anywhere else.",
+      button: "Book Now",
+      bulletPoints: [
+        { title: "Theme Development", icon: "icon1.png", message: "We'll work together with you to choose a theme for the birthday party, and all designs, coordination, and decorations will be based on the selected theme." },
+        { title: "Venue Setup", icon: "icon2.png", message: "We'll handle the setup and decoration of the venue, including chairs, tables, and all essentials for the party." },
+        { title: "Entertainment and Activities", icon: "icon2.png", message: "We'll organize entertainment options like DJs, live bands, magicians, and other performers at discounted rates. Interactive games will be tailored to the age group and preferences of your guests." },
+        { title: "Catering Services", icon: "icon2.png", message: "Our catering services are top-notch and customizable based on your preferences, considered the best among all services available." },
+        { title: "Invitations Management", icon: "icon2.png", message: "We'll design and send out invitations, managing and keeping track of guest lists." },
+        { title: "Cake and Dessert Coordination", icon: "icon2.png", message: "Choose from the best bakeries with discounts for your cake and dessert needs." },
+        { title: "Photography and Videography", icon: "icon2.png", message: "Our connections with top photographers and videographers ensure a variety of options tailored to your needs." },
+        { title: "Gifts and Favours", icon: "icon2.png", message: "We'll assist you in selecting gifts and party favours for your guests." },
+
+
+
+
+
+      ],
+    },
+
+  },
+
+  {
+    title: "Sangeet",
+    images: [{ src: "/Sangeet.jpeg", alt: "" },
+    { src: "/Sangeet2.jpeg", alt: "" },
+    { src: "/Sangeet3.jpeg", alt: "" },
+    { src: "/Sangeet4.jpeg", alt: "" },
+    { src: "/Sangeet.jpeg", alt: "" },
+    { src: "/Sangeet2.jpeg", alt: "" },
+    { src: "/Sangeet3.jpeg", alt: "" },
+    { src: "/Sangeet4.jpeg", alt: "" },
+    { src: "/Sangeet.jpeg", alt: "" },
+    { src: "/Sangeet2.jpeg", alt: "" },
+    { src: "/Sangeet3.jpeg", alt: "" },
+    { src: "/Sangeet4.jpeg", alt: "" },
+    ],
+    videos: [
+      { src: "birthdayVideo.mp4", type: "birthdayVideo1.mp4" },
+
+    ],
+    buttonLabel: "Details",
+    href: "/service2",
+    key: "sangeet",
+    details: {
+      image: {
+        src: "/Sangeet.jpeg",
+        alt: "image of a details pic"
+      },
+      description: "We assure you that we will arrange everything for a fantastic birthday party, including catering services, decorations, and themes. We have connections that can get you discounts on all the necessary items for the birthday celebration. All of this will be provided at a reasonable price, and you won't find a better deal anywhere else.",
+      button: "Book Now",
+      bulletPoints: [
+        { title: "Theme Development", icon: "icon1.png", message: "We'll work together with you to choose a theme for the birthday party, and all designs, coordination, and decorations will be based on the selected theme." },
+        { title: "Venue Setup", icon: "icon2.png", message: "We'll handle the setup and decoration of the venue, including chairs, tables, and all essentials for the party." },
+        { title: "Entertainment and Activities", icon: "icon2.png", message: "We'll organize entertainment options like DJs, live bands, magicians, and other performers at discounted rates. Interactive games will be tailored to the age group and preferences of your guests." },
+        { title: "Catering Services", icon: "icon2.png", message: "Our catering services are top-notch and customizable based on your preferences, considered the best among all services available." },
+        { title: "Invitations Management", icon: "icon2.png", message: "We'll design and send out invitations, managing and keeping track of guest lists." },
+        { title: "Cake and Dessert Coordination", icon: "icon2.png", message: "Choose from the best bakeries with discounts for your cake and dessert needs." },
+        { title: "Photography and Videography", icon: "icon2.png", message: "Our connections with top photographers and videographers ensure a variety of options tailored to your needs." },
+        { title: "Gifts and Favours", icon: "icon2.png", message: "We'll assist you in selecting gifts and party favours for your guests." },
+
+      ],
+    },
+
   },
 
 ];
@@ -101,11 +271,11 @@ export const BookNowDefaultValues = {
 }
 
 export const EventCategory = [
-  {id:"wedding", title: "Wedding"},
-  {id:"birthday", title: "Birthday Party and Baby Shower"},
-  {id:"sangeet", title: "Sangeet"},
-  {id:"Haldi", title: "Haldi and Mehendi Ceremony"},
-  {id:"cermony", title: "Ring Ceremony"},
+  { id: "wedding", title: "Wedding" },
+  { id: "birthday", title: "Birthday Party and Baby Shower" },
+  { id: "sangeet", title: "Sangeet" },
+  { id: "Haldi", title: "Haldi and Mehendi Ceremony" },
+  { id: "ringCermony", title: "Ring Ceremony" },
 
 
 

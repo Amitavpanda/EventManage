@@ -1,8 +1,12 @@
 import React from 'react'
 
-function About() {
+interface AboutProps {
+  id : string,
+}
+
+function About({id}: AboutProps) {
   return (
-    <section className=' flex flex-col gap-5 py-20'>
+    <section id={id} className=' flex-grow flex flex-col gap-5 py-20'>
       <h1 className='regular-32 flexCenter uppercase'>About</h1>
       <p className='regular24 flex flex-wrap flexCenter max-container'>Lorem ipsum dolor sit amet consectetur
       , adipisicing elit. Corporis maxime delectus deserunt consequatur consectetur harum omnis od

@@ -7,10 +7,12 @@ import Image from 'next/image'
 export default function Home() {
   return (
     <>
-    <Hero />
-    <Services />
-    <About />
-    <Contact />
+      <div className='min-h-screen flex flex-col'>
+        <Hero />
+        <Services id="services" />
+        <About id="about" />
+        <Contact id="contact" />
+      </div>
     </>
   )
 }
