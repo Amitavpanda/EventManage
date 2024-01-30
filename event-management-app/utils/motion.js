@@ -1,4 +1,4 @@
-const sidebar = {
+export const sidebar = {
   initial: {
     scaleY: 0,
   },
