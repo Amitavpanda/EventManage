@@ -8,9 +8,7 @@ import { useRouter } from 'next/navigation';
 import { animate, motion } from "framer-motion";
 import { useCycle } from 'framer-motion';
 import { useRef } from 'react';
-import Navigation from './Navigation';
 import { menuItems, navigation, sidebar } from "../utils/motion"
-import { MenuToggle } from './MenuToggle';
 import { FaHamburger } from "react-icons/fa";
 import { FaDoorOpen } from "react-icons/fa";
 
