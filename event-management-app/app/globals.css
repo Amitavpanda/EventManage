@@ -26,6 +26,10 @@ body {
 
 }
 
+.glow-shadow {
+  animation: glow 2s infinite;
+}
+
 @layer utilities {
   .btn_white { 
     @apply  border-white bg-white px-8 py-3 text-gray-90 font-bold
@@ -169,6 +173,8 @@ body {
   .get-app {
     @apply max-container relative flex w-full  flex-col justify-between gap-32 overflow-hidden bg-green-90 bg-pattern bg-cover bg-center bg-no-repeat px-6 py-12 text-white sm:flex-row sm:gap-12 sm:py-24 lg:px-20 xl:max-h-[598px] 2xl:rounded-5xl;
   }
+
+
 }
 
 
@@ -236,3 +242,14 @@ body {
   }
 }
  
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 10px 0px  rgba(0, 0, 0, 0.75);
+  }
+  50% {
+    box-shadow: 0 0 20px 10px  rgba(0, 0, 0, 0.75);
+  }
+  100% {
+    box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.75);
+  }
+}

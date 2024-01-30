@@ -12,6 +12,8 @@ const appLogger = logger.child({ filename: path.basename(__filename) });
 function routes(app: Express) {
   app.get('/healthcheck', (req: Request, res: Response) => res.sendStatus(200));
 
+  // app.get("/api/check", (req: Request, res: Response) => console.log("app is runing"));
+
 
   app.post(
     "/api/contactFormDetails",

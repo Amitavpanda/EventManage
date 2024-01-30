@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node src/app.ts",
-    "dev": "nodemon src/app.ts | npx pino-pretty"
+    "dev": "nodemon src/app.ts | npx pino-pretty",
+    "build": "tsc"
+
   },
   "author": "Amitav Panda",
   "license": "ISC",

@@ -24,7 +24,7 @@ app.use(cors());
 const port = process.env.PORT || 1337;
 
 app.listen(port, async () => {
-    appLogger.info(`App is running at http://localhost/${port}`);
+    appLogger.info(`App is running at http://localhost:${port}`);
 
     try {
         await connect();
@@ -34,4 +34,7 @@ app.listen(port, async () => {
         process.exit(1);
     }
 });
+
+
+export default app;
 
