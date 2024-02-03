@@ -32,36 +32,36 @@ function BookNowForm() {
     useEffect(() => {
         form.unregister("startDateTime");
         form.unregister("endDateTime");
-      }, [form]);
-      
+    }, [form]);
+
 
     // 2. Define a submit handler.
-    const onSubmit  = async(data: z.infer<typeof BookNowFormSchema>) => {
-        
-    try {
-        console.log("Form data submitted: ", data);
+    const onSubmit = async (data: z.infer<typeof BookNowFormSchema>) => {
 
-        data.startDateTime = new Date(data.startDateTime);
-        data.endDateTime = new Date(data.endDateTime);
- 
-          const response = await axios.post('http://localhost:1337/api/bookNowFormDetails', data);
-  
+        try {
+            console.log("Form data submitted: ", data);
 
-  
-        if (response.status === 200) {
-          console.log('Form data successfully stored in the backend.');
-  
-          await new Promise(resolve => setTimeout(resolve, 1000));
-          form.reset();
+            data.startDateTime = new Date(data.startDateTime);
+            data.endDateTime = new Date(data.endDateTime);
+
+            const response = await axios.post('http://localhost:1337/api/bookNowFormDetails', data);
+
+
+
+            if (response.status === 200) {
+                console.log('Form data successfully stored in the backend.');
+
+                await new Promise(resolve => setTimeout(resolve, 1000));
+                form.reset();
+            }
+            else {
+                console.error("Form data not successfully stored");
+            }
+
         }
-        else {
-          console.error("Form data not successfully stored");
+        catch (error) {
+            console.error("Error submitting form: ", error);
         }
-  
-      }
-      catch (error) {
-        console.error("Error submitting form: ", error);
-      }
         console.log(data);
     }
 
@@ -226,7 +226,7 @@ function BookNowForm() {
                         />
                     </div>
 
-                    <Button type="submit" className="flexCenter gap-3 border btn_dark_black w-50 h-10 btn_white_text cursor-pointer" disabled={form.formState.isSubmitting}>{form.formState.isSubmitting ? ( 'Submitting') : ('Submit') }</Button>
+                        <Button type="submit" className="flexCenter btn_dark_black w-50 h-10  cursor-pointer" disabled={form.formState.isSubmitting}>{form.formState.isSubmitting ? ('Submitting') : ('Submit')}</Button>
                 </form>
             </Form>
         </section>
