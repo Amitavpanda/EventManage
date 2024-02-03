@@ -11,6 +11,10 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Button } from './ui/button';
 import axios from 'axios';
 import { contactFormSchema } from '@/lib/validator';
+import {motion} from "framer-motion";
+import { useInView } from 'react-intersection-observer';
+import { fadeIn, heroMotion, textVariant, zoomIn } from '@/utils/motion';
+
 type ContactDetailsInfo = {
   title: string;
   info: string;
@@ -29,8 +33,9 @@ interface ContactProps {
 
 
 function ContactDetails({ title, info }: ContactDetailsInfo) {
+
   return (
-    <div className='border-brown-50 p-6 border flex flex-col flexCenter rounded-lg'>
+    <div className='border-brown-50 p-6 border flex flex-col flexCenter rounded-lg' >
       <p className='font-alex-brush regular-18 md:regular-20 lg:regular-24'>{title}</p>
       <p className='regular-18 md:regular-20 lg:regular-24'>{info}</p>
     </div>
@@ -53,6 +58,8 @@ function GoogleMap() {
 }
 
 const Contact = ({id} : ContactProps) => {
+  const [ref, inView] = useInView();
+
     const form = useForm<z.infer<typeof contactFormSchema>>({
         resolver: zodResolver(contactFormSchema),
     })
@@ -83,31 +90,31 @@ const Contact = ({id} : ContactProps) => {
   }
 
   return (
-    <section id={id} className='flex-grow flex flex-col max-container'>
+    <motion.section id={id} className='flex-grow flex flex-col max-container' ref={ref} initial="hidden" animate={inView ? "show" : "hidden"} >
 
       {/* first section */}
-      <div className='flex flex-col flexCenter'>
+      <motion.div className='flex flex-col flexCenter' variants={textVariant(0.2)}>
         <h3 className='text-brown-50 font-alex-brush bold-24'>Location</h3>
         <h2 className='regular-32 uppercase'>CONTACT</h2>
-      </div>
+      </motion.div>
 
 
       {/* second section */}
-      <div className='flex flex-row flex-wrap gap-5 flexCenter'>
+      <motion.div className='flex flex-row flex-wrap gap-5 flexCenter mt-6' variants={fadeIn("up", "spring", "0.2", "0.8")}>
         <ContactDetails title='Address' info='Hill Patna, Berhmapur , Ganjam , Odisha' />
         <ContactDetails title='Call Us' info='Call Us: 7077404655' />
         <ContactDetails title='Mail Us' info='pandaamitav01@gmail.com' />
-      </div>
+      </motion.div>
 
       {/* last section */}
       <div className='flex flex-col gap-10  my-8 lg:flex-row flexCenter'>
         {/* last subsection */}
-        <div className='w-1/2'>
+        <motion.div className='w-1/2' variants={fadeIn("left", "spring", "0.3", "1")}>
           <GoogleMap />
-        </div>
+        </motion.div>
 
         {/* last subsection */}
-        <div className='flex flex-col gap-5 w-1/2'>
+        <motion.div className='flex flex-col gap-5 w-1/2' variants={fadeIn("right", "spring","0.4","1")}>
           <h2 className='regular-20'>CONTACT</h2>
 
           <form className='max-w-md my-3' onSubmit={form.handleSubmit(onSubmit)}>
@@ -156,9 +163,9 @@ const Contact = ({id} : ContactProps) => {
 
             <Button type="submit" className="flexCenter gap-3 border btn_dark_black w-50 h-10 btn_white_text cursor-pointer" >Submit</Button>
           </form>
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 }
 
