@@ -5,7 +5,8 @@ import logger from "../utils/logger";
 import path from "path";
 const appLogger = logger.child({ filename: path.basename(__filename) });
 
-export async function createContactFormHandler(
+export async function 
+createContactFormHandler(
     req: Request<{}, {}, ContactFormInput["body"]>,
     res: Response
   ) {

@@ -6,7 +6,7 @@ import path from "path";
 const appLogger = logger.child({ filename: path.basename(__filename) });
 
 const validate = (schema: AnyZodObject) => (req: Request, res: Response, next: NextFunction) => {
-
+    
     try {
         console.log( "request body " ,req.body);
         schema.parse({
