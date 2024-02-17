@@ -102,8 +102,8 @@ const Contact = ({id} : ContactProps) => {
       {/* second section */}
       <motion.div className='flex flex-row flex-wrap gap-5 flexCenter mt-6' variants={fadeIn("up", "spring", "0.2", "0.8")}>
         <ContactDetails title='Address' info='Hill Patna, Berhmapur , Ganjam , Odisha' />
-        <ContactDetails title='Call Us' info='Call Us: 7077404655' />
-        <ContactDetails title='Mail Us' info='pandaamitav01@gmail.com' />
+        <ContactDetails title='Call Us' info='Call Us: 9438302324' />
+        <ContactDetails title='Mail Us' info='pandaprasanta01@gmail.com' />
       </motion.div>
 
       {/* last section */}

@@ -42,7 +42,7 @@ export const SERVICES = [
     key: "wedding",
     details: {
       image: {
-        src: "/WeddingEventDetailsPic.png",
+        src: "/weddingPic.png",
         alt: "image of a details pic wedding"
       },
       description: "We assure you that we'll arrange the best catering services, wedding decorations, and everything necessary for a successful wedding. Through our connections, you can avail discounts on all wedding essentials. All of this will be provided at a reasonable price, unmatched anywhere else.",
@@ -87,7 +87,7 @@ export const SERVICES = [
     key: "birthday",
     details: {
       image: {
-        src: "/BirthdayEventDetailsPic.png",
+        src: "/birthdayPic.png",
         alt: "image of a details pic"
       },
       description: "We assure you that we will arrange everything for a fantastic birthday party, including catering services, decorations, and themes. We have connections that can get you discounts on all the necessary items for the birthday celebration. All of this will be provided at a reasonable price, and you won't find a better deal anywhere else.",

@@ -24,9 +24,8 @@ const BookNow = ({params} : EventDetailProps) => {
     return (
         <>
         
-        <section className=" padding-container py-5 md:py:10">
+        <section className="padding-container py-5 md:py-10">
             <h3 className="wrapper bold-32 text-center sm:text-left">Book Your {service.title} Event</h3>
-
         </section>
 
         <div className="wrapper my-8">

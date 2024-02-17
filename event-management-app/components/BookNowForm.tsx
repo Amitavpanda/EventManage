@@ -152,7 +152,7 @@ function BookNowForm() {
                                 <FormItem>
                                     <FormLabel>Requirements</FormLabel>
                                     <FormControl className="h-72 flex flex-1 ">
-                                        <Textarea placeholder="Requirements" className="rounded-lg" />
+                                        <Textarea placeholder="Requirements" {...field} className="rounded-lg" />
                                     </FormControl>
                                     <FormDescription className="text-wrap">
                                         Enter your requirements, It is not mandetory, we can discuss requirements on phone call too.
@@ -160,6 +160,7 @@ function BookNowForm() {
                                     <FormMessage />
                                 </FormItem>
                             )}
+                            
                         />
                     </div>
 

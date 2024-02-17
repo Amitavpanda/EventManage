@@ -34,5 +34,5 @@ const payload = {
   });
 
 
-  export type   BookNowFormInput = TypeOf<typeof bookNowFormSchema>;
+  export type  BookNowFormInput = TypeOf<typeof bookNowFormSchema>;
   

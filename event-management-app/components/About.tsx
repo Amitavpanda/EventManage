@@ -16,17 +16,9 @@ function About({id}: AboutProps) {
     <motion.section id={id} className='  flexCenter flex-col gap-5 py-20' ref={ref} initial="hidden" animate={inView ? "show" : "hidden"} variants={zoomIn(0.2,0.8)} >
     
       <h1 className='regular-32 flexCenter uppercase'>About</h1>
-      <p className='regular24  max-container text-center'>Lorem ipsum dolor sit amet consectetur
-      , adipisicing elit. Corporis maxime delectus deserunt consequatur consectetur harum omnis od
-      io. Eos dolores expedita, magnam repudiandae architecto pariatur explicabo temporibus animi
-       recusandae incidunt quis? Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum ea 
-       iusto sint veritatis consequuntur excepturi aperiam eum tenetur ducimus, neque quasi culpa 
-       perferendis voluptas incidunt mollitia inventore, delectus eligendi. At. Lorem ipsum dolor 
-       sit amet consectetur adipisicing elit. Harum ullam vitae, beatae adipisci quidem non ipsa quos 
-       recusandae cupiditate magnam porro! Veritatis sit fugit pariatur doloribus soluta cupiditate 
-       explicabo quam.lorem Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione tenetur v
-       oluptates odio velit assumenda nostrum impedit doloremque maiores eligendi adipisci iusto, at 
-       atque libero. Eos adipisci voluptatem ab temporibus distinctio!</p>
+      <p className='regular24  max-container text-center'>At ShubMangal, we understand the importance of creating memorable moments for your special occasions. Whether it is celebrating love at a wedding, marking another year at a birthday party, or enjoying the traditions of a haldi ceremony, we are here to ensure every detail is taken care of.
+      What makes us unique is our wide network of connections in the industry. Through our partnerships, we can offer you exclusive discounts on everything you need for your events, including shopping, photography, catering services and many more things.
+      Our aim is to make your event planning experience easy and stress-free, so you can focus on making memories with your loved ones.</p>
 
     </motion.section>
   )
