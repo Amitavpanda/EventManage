@@ -4,16 +4,17 @@
 
 
 import React from 'react';
-import { FieldValues, useForm } from 'react-hook-form';
+import { FieldValues, FormProvider, useForm } from 'react-hook-form';
 import { z } from "zod";
 import { resolve } from 'path';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Button } from './ui/button';
 import axios from 'axios';
 import { contactFormSchema } from '@/lib/validator';
-import {motion} from "framer-motion";
+import { motion } from "framer-motion";
 import { useInView } from 'react-intersection-observer';
 import { fadeIn, heroMotion, textVariant, zoomIn } from '@/utils/motion';
+import Input from './ui/Input';
+import Button from './Button';
 
 type ContactDetailsInfo = {
   title: string;
@@ -28,7 +29,7 @@ interface ContactFormInputs {
 }
 
 interface ContactProps {
-  id : string,
+  id: string,
 }
 
 
@@ -57,19 +58,19 @@ function GoogleMap() {
   )
 }
 
-const Contact = ({id} : ContactProps) => {
+const Contact = ({ id }: ContactProps) => {
   const [ref, inView] = useInView();
 
-    const form = useForm<z.infer<typeof contactFormSchema>>({
-        resolver: zodResolver(contactFormSchema),
-    })
+  const form = useForm<z.infer<typeof contactFormSchema>>({
+    resolver: zodResolver(contactFormSchema),
+  })
 
   const onSubmit = async (data: FieldValues) => {
-
+    console.log("inside on submit contact");
     try {
       console.log("Form data submitted: ", data);
 
-      const response = await axios.post('http://localhost:1337/api/contactFormDetails', data);
+      const response = await axios.post('http://localhost:1338/api/contactFormDetails', data);
 
       if (response.status === 200) {
         console.log('Form data successfully stored in the backend.');
@@ -114,55 +115,39 @@ const Contact = ({id} : ContactProps) => {
         </motion.div>
 
         {/* last subsection */}
-        <motion.div className='flex flex-col gap-5 w-1/2' variants={fadeIn("right", "spring","0.4","1")}>
+        <motion.div className='flex flex-col gap-5 w-1/2' variants={fadeIn("right", "spring", "0.4", "1")}>
+
           <h2 className='regular-20'>CONTACT</h2>
 
-          <form className='max-w-md my-3' onSubmit={form.handleSubmit(onSubmit)}>
-            {/* first row */}
-            <div className='mb-4 flex'>
-              <div className='mr-2 flex-1'>
-                <input
-                  {...form.register('name')}
-                  className='w-full px-3 py-2 border rounded-md border-brown-50 focus:outline-none bg-transparent text-brown-50 placeholder-brown-30'
-                  placeholder='Name'
-                />
+          <FormProvider {...form}>
+            <form className='max-w-md' onSubmit={form.handleSubmit(onSubmit)}>
+              {/* first row */}
+              <div className='flex flex-col flexCenter gap-2 md:flex-row'>
+                <Input label="Name" name="name" placeholder="Name" description="Enter your name" help="Inside contact"/>
+                <Input label="Phone" name="phoneNumber" placeholder="Phone" description="Enter your Phone"/>
               </div>
 
-              <div className='ml-2 flex-1'>
-                <input
-                  {...form.register('phoneNumber')}
+              <Input label="Email" name="email" placeholder="Email" description="Enter your Email"/>
 
-                  className='w-full px-3 py-2 border rounded-md border-brown-50 focus:outline-none bg-transparent text-brown-50 placeholder-brown-30'
-                  placeholder='Phone'
-                />
-
-
-              </div>
-            </div>
-
-            {/* second row */}
-            <div className='mb-4'>
-              <input
-                {...form.register('email')}
-                className='w-full px-3 py-2 border rounded-md border-brown-50 focus:outline-none bg-transparent text-brown-50 placeholder-brown-30'
-                placeholder='Email'
-              />
- 
-            </div>
-
-            {/* text box */}
-            <div className='mb-4'>
               <textarea
                 {...form.register('message')}
-                className='w-full px-3 py-2 border rounded-md border-brown-50 focus:outline-none bg-transparent text-brown-50 placeholder-brown-30'
+                className='w-full px-3 py-2 mt-4 border rounded-md border-brown-50 focus:outline-none bg-transparent text-brown-50 placeholder-brown-30'
                 placeholder='Message'
               />
+              <div className='flexCenter'>
+                <Button
+                  type='submit'
+                  title='Submit'
+                  variant='btn_dark_black'
+                  hoverBgVariant='btn_white_text'
+                  height={2}
+                  width={14} />
+              </div>
 
 
-            </div>
+            </form>
+          </FormProvider>
 
-            <Button type="submit" className="flexCenter gap-3 border btn_dark_black w-50 h-10 btn_white_text cursor-pointer" >Submit</Button>
-          </form>
         </motion.div>
       </div>
     </motion.section>

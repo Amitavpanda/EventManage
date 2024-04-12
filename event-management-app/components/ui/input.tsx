@@ -1,25 +1,36 @@
-import * as React from "react"
+import { useForm, useFormContext } from "react-hook-form"
+import { z } from "zod"
 
-import { cn } from "@/lib/utils"
 
-export interface InputProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {}
 
-const Input = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, type, ...props }, ref) => {
+
+interface InputProps {
+    label: string,
+    name: any
+    placeholder: string
+    description: string
+    help?: string
+
+}
+
+const Input = ({ label, name, placeholder, description, help }: InputProps) => {
+
+    const { register, formState: { errors } } = useFormContext();
+    console.log(help)
     return (
-      <input
-        type={type}
-        className={cn(
-          "flex h-10 w-full",
-          className
-        )}
-        ref={ref}
-        {...props}
-      />
-    )
-  }
-)
-Input.displayName = "Input"
+        <div className="flex flex-col mt-2">
+            <label className={`${ errors[name]?.message ? 'text-red-500' : 'text-white-100' } text-[0.90rem]`}>{label}</label>
+            <input {...register(name)}
+                className="w-full px-3 overflow-y-hidden py-2 h-10 rounded-md border bg-transparent border-brown-50 focus:outline-none placeholder-brown-30"
+                placeholder={placeholder}
+            />
+            <span className="text-gray-500">{description}</span>
+            <div className={`${errors[name]?.message ? 'h-5' : 'h-3'} mt-1`}>
+                <p className={`text-red-500 text-[0.75rem] ${errors[name] ? '' : 'hidden'}`}>{errors[name]?.message}</p>
+            </div>
 
-export { Input }
+        </div>
+    )
+}
+
+export default Input;

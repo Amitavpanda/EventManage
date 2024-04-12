@@ -1,19 +1,18 @@
 import { object, number, string, TypeOf, date} from "zod";
-import logger from "../utils/logger";
 import path from "path";
-const appLogger = logger.child({ filename: path.basename(__filename) });
 
 
 
 const payload = {
     body: object({
-      name: string({
+      nameBookNow: string({
         required_error: "Name is required",
       }),
 
-      phoneNumber: string({
-        required_error: "Phone number is required",
+      phoneNumberBookNow: string({
+        required_error: "Phone number  Book Now is required",
       }).min(10, "Phone number should be at least 10 digit long"),
+
 
       budget : string(),
       category: string({
@@ -35,4 +34,6 @@ const payload = {
 
 
   export type  BookNowFormInput = TypeOf<typeof bookNowFormSchema>;
+  
+
   

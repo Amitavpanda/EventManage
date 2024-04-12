@@ -260,8 +260,8 @@ export const SERVICES = [
 ];
 
 export const BookNowDefaultValues = {
-  name: "",
-  phoneNumber: "",
+  nameBookNow: "",
+  phoneNumberBookNow: "",
   budget: "",
   category: "",
   requirements: "",

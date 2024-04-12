@@ -1,11 +1,9 @@
 import mongoose, { Mongoose } from "mongoose";
 import { customAlphabet } from "nanoid";
-import logger from "../utils/logger";
 import path from "path";
 
 const nanoid = customAlphabet("abcdefghijklmnopqrstuvwxzy0123456789", 10);
 
-const appLogger = logger.child({ filename: path.basename(__filename) });
 
 
 

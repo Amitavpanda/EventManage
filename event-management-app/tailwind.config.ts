@@ -64,6 +64,14 @@ module.exports = {
         },
         black : {
           100 : '#000',
+
+        },
+        slate : {
+          200 : '#e2e8f0',
+        },
+
+        red : {
+          500 : '#ef4444',
         },
         white: '#FFFFFF',
         border: 'hsl(var(--border))',

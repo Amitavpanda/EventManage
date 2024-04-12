@@ -1,24 +1,21 @@
 "use client"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import {
-    Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage,
-} from "@/components/ui/form"
+import { FieldValues, FormProvider, useForm } from "react-hook-form"
+
 import * as z from "zod"
 
-import { Input } from "@/components/ui/input"
 import { BookNowFormSchema } from "@/lib/validator"
 import { BookNowDefaultValues } from "@/constants"
-import Dropdown from "./Dropdown"
-import { Textarea } from "@/components/ui/textarea"
-import DatePicker from "react-datepicker";
-import { Button } from "./ui/button"
 
-import "react-datepicker/dist/react-datepicker.css";
+
+
 import { useEffect, useState } from "react"
 import { Value } from "@radix-ui/react-select"
 import axios from "axios"
-
+import Input from "./ui/Input"
+import DropDown from "./ui/Dropdown"
+import DatePickerComponent from "./ui/DatepickerComponentt"
+import Button from "./Button"
 
 
 function BookNowForm() {
@@ -26,26 +23,15 @@ function BookNowForm() {
 
     const form = useForm<z.infer<typeof BookNowFormSchema>>({
         resolver: zodResolver(BookNowFormSchema),
-        defaultValues: BookNowDefaultValues
     })
-
-    useEffect(() => {
-        form.unregister("startDateTime");
-        form.unregister("endDateTime");
-    }, [form]);
-
-
     // 2. Define a submit handler.
-    const onSubmit = async (data: z.infer<typeof BookNowFormSchema>) => {
+    const onSubmit = async (data: FieldValues) => {
+        console.log("inside on submit book now ");
 
         try {
             console.log("Form data submitted: ", data);
-
-            data.startDateTime = new Date(data.startDateTime);
-            data.endDateTime = new Date(data.endDateTime);
-
-            const response = await axios.post('http://localhost:1337/api/bookNowFormDetails', data);
-
+            const response = await axios.post('http://localhost:1338/api/bookNowFormDetails', data);
+            console.log("response", response);
 
 
             if (response.status === 200) {
@@ -67,169 +53,52 @@ function BookNowForm() {
 
     return (
         <section className="padding-container">
-            <Form {...form}>
-                <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col gap-8">
-                    <div className="flex flex-col md:flex-row gap-5">
-
-                        <FormField
-                            control={form.control}
-                            name="name"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Name</FormLabel>
-                                    <FormControl>
-                                        <Input placeholder="Name" {...field} className="px-3 py-2 border rounded-md border-brown-50 focus:outline-none bg-transparent text-brown-50 placeholder-brown-30" />
-                                    </FormControl>
-                                    <FormDescription className="">
-                                        Enter your Name
-                                    </FormDescription>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-
-                        <FormField
-                            control={form.control}
-                            name="phoneNumber"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Phone</FormLabel>
-                                    <FormControl>
-                                        <Input placeholder="Phone" {...field} className="px-3 py-2 border rounded-md border-brown-50 focus:outline-none bg-transparent text-brown-50 placeholder-brown-30" />
-                                    </FormControl>
-                                    <FormDescription className="">
-                                        Enter your Phone Number
-                                    </FormDescription>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-
+            <FormProvider {...form}>
+                <form className="flex flex-col gap-y-6" onSubmit={form.handleSubmit(onSubmit)}>
+                    <div className="flex md:flex-row flex-col gap-6 w-full">
+                        <div className="flex-1">
+                            <Input label="Name" name="name" placeholder="Name" description="Enter your name" help="inside booknowform" />
+                        </div>
+                        <div className="flex-1">
+                            <Input label="Phone" name="phoneNumber" placeholder="Phone" description="Enter your Phone" />
+                        </div>
                     </div>
 
-                    <div className="flex flex-col gap-5 md:flex-row">
-                        <FormField
-                            control={form.control}
-                            name="category"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Cateogry</FormLabel>
-                                    <FormControl className="flex flex-1 w-1/2 ">
-                                        <Dropdown onChangeHandler={field.onChange} value={field.value} />
-                                    </FormControl>
-                                    <FormDescription className="">
-                                        Select the category of the Event
-                                    </FormDescription>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-
-                        <FormField
-                            control={form.control}
-                            name="budget"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Budget</FormLabel>
-                                    <FormControl className="flex flex-1">
-                                        <Input placeholder="Budget" {...field} className="px-3 py-2 border rounded-md border-brown-50 focus:outline-none bg-transparent text-brown-50 placeholder-brown-30" />
-                                    </FormControl>
-                                    <FormDescription className="">
-                                        Enter your expected Budget.
-                                    </FormDescription>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-
+                    <div className="md:flex-row flex-col  gap-6">
+                        <div className="flex-1 ">
+                            <DropDown name="category" description="Select the category of the Event" />
+                        </div>
+                        <div className="flex-1">
+                            <Input label="Budget" name="budget" placeholder="Budget" description="Enter your expected budget" />
+                        </div>
                     </div>
 
-                    <div className="">
-                        <FormField
-                            control={form.control}
-                            name="requirements"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Requirements</FormLabel>
-                                    <FormControl className="h-72 flex flex-1 ">
-                                        <Textarea placeholder="Requirements" {...field} className="rounded-lg" />
-                                    </FormControl>
-                                    <FormDescription className="text-wrap">
-                                        Enter your requirements, It is not mandetory, we can discuss requirements on phone call too.
-                                    </FormDescription>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                            
-                        />
+                    <textarea {...form.register('requirements')} className="w-full rounded-md border border-brown-50 px-3 py-2 focus:outline-none bg-transparent h-100 min-h-[15rem]" placeholder="Requirements" />
+
+                    <div className="md:flex-row flex-col gap-5 gap-y-5">
+
+                        <div className="flex-1">
+                            <DatePickerComponent name="startDateTime" description="Select your expected starting date and time of the event" />
+                        </div>
+                        <div className="flex-1">
+                            <DatePickerComponent name="endDateTime" description="Select your expected ending date and time of the event" />
+                        </div>
                     </div>
 
-                    <div className="flex flex-col md:flex-row gap-5">
-                        <FormField
-                            control={form.control}
-                            name="startDateTime"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Start Date Time</FormLabel>
-                                    <FormControl className="flex flex-1 ">
-                                        <div className="w-full px-3 py-2 border rounded-md border-brown-50 focus:outline-none bg-transparent text-brown-50 placeholder-brown-30">
-                                            <DatePicker selected={field.value} onChange={(date: Date) => field.onChange(date)} className="w-full bg-transparent focus:outline-none" showTimeSelect timeInputLabel="Time: " dateFormat="MM/dd/yyyy h:mm aa" wrapperClassName="datePicker" />
-                                        </div>
+                    <Input label="Name" name="guestsNumber" placeholder="Number of Guests" description="Enter your expected number of guests for the event" />
 
-                                    </FormControl>
-                                    <FormDescription className="text-wrap">
-                                        Select your expected starting date and time of the event
-                                    </FormDescription>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-
-                        <FormField
-                            control={form.control}
-                            name="endDateTime"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>End Date Time</FormLabel>
-                                    <FormControl className="flex flex-1 ">
-                                        <div className="w-full px-3 py-2 border rounded-md border-brown-50 focus:outline-none bg-transparent text-brown-50 placeholder-brown-30">
-                                            <DatePicker selected={field.value} onChange={(date: Date) => field.onChange(date)} className="w-full bg-transparent focus:outline-none" showTimeSelect timeInputLabel="Time: " dateFormat="MM/dd/yyyy h:mm aa" wrapperClassName="datePicker" />
-                                        </div>
-
-                                    </FormControl>
-                                    <FormDescription className="text-wrap">
-                                        Select your expected ending date and time of the event
-                                    </FormDescription>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-
-
+                    <div className='flexCenter w-full'>
+                        <Button
+                            type='submit'
+                            title='Submit'
+                            variant='btn_dark_black'
+                            hoverBgVariant='btn_white_text'
+                            height={2}
+                            width={14} />
                     </div>
-
-                    <div className="">
-                        <FormField
-                            control={form.control}
-                            name="guestsNumber"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel>Number of Guests</FormLabel>
-                                    <FormControl className="flex flex-1 ">
-                                        <Input placeholder="Number of Guests" {...field} className="px-3 py-2 border rounded-md border-brown-50 focus:outline-none bg-transparent text-brown-50 placeholder-brown-30" />
-                                    </FormControl>
-                                    <FormDescription className="text-wrap">
-                                        Enter your expected number of guests for the event
-                                    </FormDescription>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-                    </div>
-
-                        <Button type="submit" className="flexCenter btn_dark_black w-50 h-10  cursor-pointer" disabled={form.formState.isSubmitting}>{form.formState.isSubmitting ? ('Submitting') : ('Submit')}</Button>
                 </form>
-            </Form>
+            </FormProvider>
+
         </section>
     )
 }

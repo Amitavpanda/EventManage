@@ -22,6 +22,10 @@ body {
   font-family: 'Alex Brush', cursive;
 }
 
+.hidden {
+  display: none;
+}
+
 .font-condiment {
   font-family: 'Condiment', cursive;
 

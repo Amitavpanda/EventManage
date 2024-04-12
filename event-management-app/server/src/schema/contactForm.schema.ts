@@ -1,7 +1,5 @@
 import { object, number, string, TypeOf } from "zod";
-import logger from "../utils/logger";
 import path from "path";
-const appLogger = logger.child({ filename: path.basename(__filename) });
 
 
 
@@ -13,7 +11,7 @@ const payload = {
       email: string(),
       phoneNumber: string({
         required_error: "Phone number is required",
-      }).min(10, "Phone number should be at least 10 digit long"),
+      }).min(10, "Phone number should be at least 10 digit long").max(14, "Phone Number should not be greater than 14 digits"),
       message: string({
         required_error: "Message is required, We would love to hear about your message",
       }),

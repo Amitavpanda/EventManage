@@ -1,19 +1,17 @@
 import mongoose, { Date, Mongoose } from "mongoose";
 import { customAlphabet } from "nanoid";
-import logger from "../utils/logger";
 import path from "path";
 import { bookNowFormSchema } from "../schema/bookNowFormSchema";
 import { string } from "zod";
 
 const nanoid = customAlphabet("abcdefghijklmnopqrstuvwxzy0123456789", 10);
 
-const appLogger = logger.child({ filename: path.basename(__filename) });
 
 
 
 export interface BookNowFormInput {
-    name: string,
-    phoneNumber: string,
+    nameBookNow: string,
+    phoneNumberBookNow: string,
     budget: string,
     category: string,
     requirements: string,
@@ -35,8 +33,8 @@ const BookNowFormSchema = new mongoose.Schema({
         default: () => `product_${nanoid()}`,
     },
 
-    name: {type: String, required: true },
-    phoneNumber: {type: String, required: true},
+    nameBookNow: {type: String, required: false },
+    phoneNumberBookNow: {type: String, required: false},
     budget: {type: String},
     category : {type: String},
     requirements: {type: String},
@@ -50,6 +48,6 @@ const BookNowFormSchema = new mongoose.Schema({
 }
 );
 
-const BookNowFormModel = mongoose.model<BookNowFormDocument>("Book Now Form", BookNowFormSchema);
+const  BookNowFormModel = mongoose.model<BookNowFormDocument>("Book Now Form", BookNowFormSchema);
 
 export default BookNowFormModel;
