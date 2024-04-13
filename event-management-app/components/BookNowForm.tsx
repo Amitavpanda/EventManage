@@ -12,7 +12,7 @@ import { BookNowDefaultValues } from "@/constants"
 import { useEffect, useState } from "react"
 import { Value } from "@radix-ui/react-select"
 import axios from "axios"
-import Input from "./ui/Input"
+import Input from "./ui/input";
 import DropDown from "./ui/Dropdown"
 import DatePickerComponent from "./ui/DatepickerComponentt"
 import Button from "./Button"

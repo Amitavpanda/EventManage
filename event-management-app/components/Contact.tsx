@@ -12,8 +12,10 @@ import axios from 'axios';
 import { contactFormSchema } from '@/lib/validator';
 import { motion } from "framer-motion";
 import { useInView } from 'react-intersection-observer';
+import Input from './ui/input';
 import { fadeIn, heroMotion, textVariant, zoomIn } from '@/utils/motion';
-import Input from './ui/Input';
+
+
 import Button from './Button';
 
 type ContactDetailsInfo = {
@@ -70,7 +72,7 @@ const Contact = ({ id }: ContactProps) => {
     try {
       console.log("Form data submitted: ", data);
 
-      const response = await axios.post('http://localhost:1338/api/contactFormDetails', data);
+      const response = await axios.post('https://eventmanagementwebapp-1.onrender.com/api/contactFormDetails', data);
 
       if (response.status === 200) {
         console.log('Form data successfully stored in the backend.');
