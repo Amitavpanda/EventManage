@@ -5,12 +5,12 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useFormContext } from "react-hook-form";
 
 interface DatePickerComponentProps {
-    name : any,
+    name : string,
     description : string,
 
 }
 const DatePickerComponent = ({ name, description } : DatePickerComponentProps) => {
-    const [startDate, setStartDate] = useState(new Date());
+    const [startDate, setStartDate] = useState<Date | null>(new Date());
     const { register, formState: { errors } } = useFormContext();
     return (
         <div>
