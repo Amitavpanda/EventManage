@@ -1,10 +1,12 @@
-import ContactFormModel, { ContactFormDocument, ContactFormInput } from "../models/ContactFormModel";
-import { BookNowFormInput } from "../schema/bookNowFormSchema";
+
+
 import path from "path";
 import BookNowFormModel from "../models/BookNowFormModel";
+import { BookNowFormDocument } from "../models/BookNowFormModel";
 
 
-export async function createBookNowForm( input: BookNowFormInput){
+export async function createBookNowForm( input: BookNowFormDocument){
+    console.log("booknowform input", input);
     return BookNowFormModel.create(input);
 }
 
