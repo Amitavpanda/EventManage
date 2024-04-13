@@ -6,7 +6,7 @@ import { z } from "zod"
 
 interface InputProps {
     label: string,
-    name: any
+    name: string
     placeholder: string
     description: string
     help?: string
@@ -26,10 +26,7 @@ const Input = ({ label, name, placeholder, description, help }: InputProps) => {
             />
             <span className="text-gray-500">{description}</span>
             <div className={`${errors[name]?.message ? 'h-5' : 'h-3'} mt-1`}>
-                <p className={`text-red-500 text-[0.75rem] ${errors[name].message ? '' : 'hidden'}`}>                 
-                {typeof errors[name]?.message === 'string' && (
-                    <p className={`text-red-500 text-[0.75rem]`}>{errors[name]?.message}</p>
-                )}</p>
+                <p className={`text-red-500 text-[0.75rem]`}>{errors[name]?.message}</p>
             </div>
 
         </div>
