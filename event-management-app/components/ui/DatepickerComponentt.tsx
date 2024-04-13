@@ -5,7 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useFormContext } from "react-hook-form";
 
 interface DatePickerComponentProps {
-    name : string,
+    name : any,
     description : string,
 
 }
