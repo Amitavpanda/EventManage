@@ -30,7 +30,7 @@ function BookNowForm() {
 
         try {
             console.log("Form data submitted: ", data);
-            const response = await axios.post('http://localhost:1338/api/bookNowFormDetails', data);
+            const response = await axios.post('https://eventmanagementwebapp-1.onrender.com/api/bookNowFormDetails', data);
             console.log("response", response);
 
 

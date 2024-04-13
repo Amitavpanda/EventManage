@@ -70,7 +70,7 @@ const Contact = ({ id }: ContactProps) => {
     try {
       console.log("Form data submitted: ", data);
 
-      const response = await axios.post('http://localhost:1338/api/contactFormDetails', data);
+      const response = await axios.post('https://eventmanagementwebapp-1.onrender.com/api/contactFormDetails', data);
 
       if (response.status === 200) {
         console.log('Form data successfully stored in the backend.');
