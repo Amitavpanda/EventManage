@@ -12,8 +12,10 @@ import axios from 'axios';
 import { contactFormSchema } from '@/lib/validator';
 import { motion } from "framer-motion";
 import { useInView } from 'react-intersection-observer';
+import Input from './ui/input';
 import { fadeIn, heroMotion, textVariant, zoomIn } from '@/utils/motion';
-import Input from './ui/Input';
+
+
 import Button from './Button';
 
 type ContactDetailsInfo = {
