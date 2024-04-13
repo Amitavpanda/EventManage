@@ -26,7 +26,7 @@ const Input = ({ label, name, placeholder, description, help }: InputProps) => {
             />
             <span className="text-gray-500">{description}</span>
             <div className={`${errors[name]?.message ? 'h-5' : 'h-3'} mt-1`}>
-                <p className={`text-red-500 text-[0.75rem] ${errors[name] ? '' : 'hidden'}`}>{errors[name]?.message}</p>
+                <p className={`text-red-500 text-[0.75rem] ${errors[name] ? '' : 'hidden'}`}> {typeof errors[name]?.message === 'string' ? errors[name]?.message : null}</p>
             </div>
 
         </div>
