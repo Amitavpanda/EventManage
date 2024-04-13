@@ -10,10 +10,10 @@ export async function createBookNowFormHandler(
     res: Response
   ) {
     
-    const body = req.body;
+    const body = req.body;  
     console.log("body inside controller", body);
-  
-    const product = await createBookNowForm({body});
+    
+    const product = await createBookNowForm({ ...body});
     console.log("product inside controller", product);
   
     return res.send(product);

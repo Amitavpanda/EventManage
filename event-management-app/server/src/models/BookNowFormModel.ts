@@ -9,7 +9,7 @@ const nanoid = customAlphabet("abcdefghijklmnopqrstuvwxzy0123456789", 10);
 
 
 
-export interface BookNowFormInput {
+export interface BookNowFormDocument {
     nameBookNow: string,
     phoneNumberBookNow: string,
     budget: string,
@@ -21,9 +21,7 @@ export interface BookNowFormInput {
 }
 
 
-export interface BookNowFormDocument extends BookNowFormInput, mongoose.Document{
-    createdAt: Date,
-}
+
 
 const BookNowFormSchema = new mongoose.Schema({
     bookNowFormId: {
@@ -33,8 +31,8 @@ const BookNowFormSchema = new mongoose.Schema({
         default: () => `product_${nanoid()}`,
     },
 
-    nameBookNow: {type: String, required: false },
-    phoneNumberBookNow: {type: String, required: false},
+    nameBookNow: {type: String, required: true },
+    phoneNumberBookNow: {type: String, required: true},
     budget: {type: String},
     category : {type: String},
     requirements: {type: String},
