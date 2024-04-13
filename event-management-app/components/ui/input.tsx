@@ -6,7 +6,7 @@ import { z } from "zod"
 
 interface InputProps {
     label: string,
-    name: string
+    name: any
     placeholder: string
     description: string
     help?: string
@@ -25,8 +25,8 @@ const Input = ({ label, name, placeholder, description, help }: InputProps) => {
                 placeholder={placeholder}
             />
             <span className="text-gray-500">{description}</span>
-            <div className={`${errors[name]?.message ? 'h-5' : 'h-3'} mt-1`}>
-                <p className={`text-red-500 text-[0.75rem]`}>{errors[name]?.message}</p>
+            <div className={`${errors[name] ? 'h-6' : 'h-3'} mt-1`}>
+                <p className={`text-red-500 text-[0.75rem]`}>{errors[name]?.message.toString()}</p>
             </div>
 
         </div>
